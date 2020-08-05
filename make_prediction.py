@@ -13,7 +13,7 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.model_selection import train_test_split
 
 
-datas = pd.read_csv('train3600_dataset.csv')
+datas = pd.read_csv('csv_files/train3600_dataset.csv')
 features, labels = datas.iloc[:, :-1], datas.iloc[:, -1]
 
 X_train, X_test, y_train, y_test = train_test_split(features, labels, test_size=0.25, random_state=42)
@@ -22,10 +22,10 @@ clf = GradientBoostingClassifier(learning_rate=0.2, n_estimators=150, random_sta
 clf.fit(X_train, y_train)
 
 
-test_datas = pd.read_csv('sample_submission.csv')
-test_features = pd.read_csv('test_features.csv')
+test_datas = pd.read_csv('csv_files/sample_submission.csv')
+test_features = pd.read_csv('csv_files/test_features.csv')
 
 pred = clf.predict(test_features)
 test_datas.loc[:, ('target')] = pred
 
-test_datas.to_csv('submission3600.csv', index=False)
+test_datas.to_csv('csv_files/submission3600.csv', index=False)
