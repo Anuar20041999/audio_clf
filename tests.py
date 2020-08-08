@@ -7,7 +7,7 @@ import pandas as pd
 
 from joblib import dump, load
 
-from sklearn.ensemble import GradientBoostingClassifier, AdaBoostClassifier
+from sklearn.ensemble import GradientBoostingClassifier, AdaBoostClassifier, RandomForestClassifier
 from sklearn.model_selection import train_test_split
 
 
@@ -18,7 +18,7 @@ X_train, X_test, y_train, y_test = train_test_split(features, labels, test_size=
 
 
 for i in range(1, 10):
-    clf = GradientBoostingClassifier(learning_rate=0.1*i, n_estimators=150, random_state=1)
+    clf = RandomForestClassifier(n_estimators=100 + 10*i, random_state=1)
     clf.fit(X_train, y_train)
     score = clf.score(X_test, y_test)
     print(score)

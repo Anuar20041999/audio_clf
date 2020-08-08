@@ -8,9 +8,9 @@ from make_dataset import make_dataset_train
 
 
 datas = pd.read_csv('csv_files/train.csv', index_col=0)
-datas = datas.sort_values('wav_path')
-datas = datas[:17023]
-datas = datas[0:3600]
+#datas = datas.sort_values('wav_path')
+datas = datas[:15]
+
 
 dataset = make_dataset_train(datas, path_pref='csv_files/',
-                                save_path='csv_files/train3600_dataset.csv')
+                                save_path='csv_files/train17023_dataset.csv')
